@@ -1,0 +1,63 @@
+﻿BDD Test Case in Gherkin language 
+
+
+# Positive Test Case 
+
+
+Feature: Gmail Compose and Send Email Function
+
+
+Scenario: Send an email with a valid subject and body
+
+
+   given:  the user is logged into Gmail
+   when: the user clicks "Compose"
+   and: enters "Valid mail ID" in the "To" field
+   and: enters "Incubyte" in the "Subject" field
+   and: enters "QA test for Incubyte" in the body
+   and: clicks the "Send" button
+   then: the email should be sent successfully
+   and: a "Message sent" confirmation should appear
+
+
+
+
+# Negative Test Case
+
+
+Feature: Gmail Compose and Send Email Function
+
+
+Scenario: Send an email without entering a recipient
+
+
+   given: the user is logged into Gmail
+   when: the user clicks "Compose"
+   and: leaves blank the "To" field empty
+   and: enters "Incubyte" in the "Subject" field
+   and: enters "QA test for Incubyte" in the body
+   and: clicks the "Send" button
+   then: an error message should appear stating that a recipient is required
+
+
+Scenario: Send an email without a subject
+
+
+   given: the user is logged into Gmail
+   when: the user clicks "Compose"
+   and: enters "Mail Id" in the "To" field
+   and: leaves the "Subject" field empty
+   and: enters "QA test for Incubyte" in the body
+   and: clicks the "Send" button
+   then: Gmail should warn the user that no subject is entered
+   and: allow the email to be sent
+
+
+Scenario: Send an email without a body
+   given: the user is logged into Gmail
+   when: the user clicks "Compose"
+   and: enters "mail Id" in the "To" field
+   and: enters "Incubyte" in the "Subject" field
+   and: leaves the email body empty
+   and: clicks the "Send" button
+   then: the email should be sent successfully without a body
